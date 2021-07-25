@@ -16,6 +16,8 @@ class Logger extends Singleton
 {
     public CONST DEFAULT_LOG_NAME  = 'default';
     public CONST DEFAULT_LOG_LEVEL  = 'debug';
+    public CONST DEFAULT_LOG_FILE  = 'DEFAULT_LOG_FILE';
+    public CONST DEFAULT_LOG_DIR = 'DEFAULT_LOG_DIR';
 
     /** file to place logs */
     protected $logPath;
@@ -63,7 +65,9 @@ class Logger extends Singleton
         if (!empty($this->getLogPath())) {
             $logPath = $this->getLogPath();
         } else {
-            $logPath = LetsEnv::getInstance()->getEnv('LOG_PATH');
+            $env = LetsEnv::getInstance();
+            $logPath = $env->getEnv(static::DEFAULT_LOG_DIR)
+                . $env->getEnv(static::DEFAULT_LOG_FILE);
         }
 
         if (!empty($logPath) && file_exists($logPath)) {
