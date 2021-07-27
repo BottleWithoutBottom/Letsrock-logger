@@ -12,8 +12,7 @@
     "php": ">=7.3.0",
     "psr/log": "^1.1",
     "monolog/monolog": "^2.2",
-    "letsrock/letsenv": "1.*",
-    "letsrock/singleton": "1.*"
+    "letsrock/letsenv": "1.*"
   },
   "autoload": {
     "classmap": ["src"]
