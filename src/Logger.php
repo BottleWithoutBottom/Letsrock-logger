@@ -1,18 +1,16 @@
 <?php
 namespace Bitrock;
 
-use Bitrock\LetsEnv;
-use Bitrock\Models\Singleton;
 use Monolog\Logger as MonologLogger;
 use Monolog\Handler\StreamHandler;
 
 /** USAGE
- * $logger = Logger::getInstance();
+ * $logger = new Logger();
  * (optional) $logger->setLogPath($logPath) - to change default log path
  * $logger->info(`User with login ${$login} successfully logged in`);
  */
 
-class Logger extends Singleton
+class Logger
 {
     public CONST DEFAULT_LOG_NAME  = 'default';
     public CONST DEFAULT_LOG_LEVEL  = 'debug';
@@ -37,6 +35,11 @@ class Logger extends Singleton
         'alert' => MonologLogger::ALERT,
         'emergency' => MonologLogger::EMERGENCY,
     ];
+
+    public function __construct()
+    {
+
+    }
 
     /**
      * Call method of current MonologLogger instance
